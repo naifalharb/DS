@@ -17,20 +17,25 @@ def main():
         # demo hsm ca chain
         #open('cert-hsm-ca.pem', 'rt').read(),
     )
+
+    #list of files we want to try
     for fname in (
         'sample-signed.pdf',
     ):
-        print('*' * 20, fname)
+        print('*' * 5, fname,'*' * 5)
         try:
             data = open(fname, 'rb').read()
         except:
             continue
-        (hashok, signatureok, certok) = pdf.verify(data, trusted_cert_pems)
-        print('signature ok?', signatureok)
-        print('hash ok?', hashok)
+        try:
+          (hashok, signatureok, certok) = pdf.verify(data, trusted_cert_pems)
+          print('The Signature:', signatureok)
+          print('The Hash:', hashok)
+          print('The Certificate:', certok)
+        except:
+          print("The Document is not valid")
 
-        
-        print('cert ok?', certok)
+      
 
 
 main()
