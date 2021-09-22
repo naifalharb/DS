@@ -5,9 +5,8 @@ from cryptography.hazmat.primitives.serialization import pkcs12
 from endesive.pdf import cms
 from PIL import Image
 
-#info for the signature
 def main():
-    
+    #info for the signature
     date = datetime.datetime.utcnow() - datetime.timedelta(hours=12)
     date = date.strftime("D:%Y%m%d%H%M%S+00'00'")
     img = Image.open("watermark.png")
